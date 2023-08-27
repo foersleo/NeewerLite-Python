@@ -1,6 +1,6 @@
-from PySide2.QtCore import QRect, Signal, Qt
-from PySide2.QtGui import QFont, QLinearGradient, QColor, QKeySequence
-from PySide2.QtWidgets import QFormLayout, QGridLayout, QKeySequenceEdit, QWidget, QPushButton, QTableWidget, QTableWidgetItem, QAbstractScrollArea, QAbstractItemView, \
+from PySide6.QtCore import QRect, Signal, Qt
+from PySide6.QtGui import QFont, QLinearGradient, QColor, QKeySequence
+from PySide6.QtWidgets import QFormLayout, QGridLayout, QKeySequenceEdit, QWidget, QPushButton, QTableWidget, QTableWidgetItem, QAbstractScrollArea, QAbstractItemView, \
                               QTabWidget, QGraphicsScene, QGraphicsView, QFrame, QSlider, QLabel, QLineEdit, QCheckBox, QStatusBar, QScrollArea, QTextEdit
 
 import platform # for selecting specific fonts for specific systems
@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         # ============ FONTS, GRADIENTS AND OTHER WINDOW SPECIFICS ============
         mainFont = QFont()
         mainFont.setBold(True)
-        mainFont.setWeight(75)
+        mainFont.setWeight(QFont.Normal)
 
         # THE "DARK TO LIGHT" GRADIENT FOR BRIGHTNESS/INTENSITY
         gradient_Bri = QLinearGradient(0, 0, 532, 31)

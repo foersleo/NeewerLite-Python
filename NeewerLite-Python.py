@@ -6,7 +6,7 @@
 ## > https://github.com/taburineagle/NeewerLite-Python/ <
 ############################################################
 ## A cross-platform Python script using the bleak and
-## PySide2 libraries to control Neewer brand lights via
+## PySide6 libraries to control Neewer brand lights via
 ## Bluetooth on multiple platforms -
 ##          Windows, Linux/Ubuntu, MacOS and RPi
 ############################################################
@@ -53,22 +53,22 @@ if platform.system() == "Windows": # try to load winrt if we're on Windows
     except Exception as e:
         pass # if there is an exception to this module loading, you're not on Windows
 
-importError = 0 # whether or not there's an issue loading PySide2 or the GUI file
+importError = 0 # whether or not there's an issue loading PySide6 or the GUI file
 
 # IMPORT PYSIDE2 (the GUI libraries)
 try:
-    from PySide2.QtCore import Qt, QItemSelectionModel
-    from PySide2.QtGui import QLinearGradient, QColor, QKeySequence
-    from PySide2.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QShortcut, QMessageBox
+    from PySide6.QtCore import Qt, QItemSelectionModel
+    from PySide6.QtGui import QLinearGradient, QColor, QKeySequence, QShortcut
+    from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QMessageBox
 
 except Exception as e:
-    importError = 1 # log that we can't find PySide2
+    importError = 1 # log that we can't find PySide6
 
 # IMPORT THE GUI ITSELF
 try:
     from ui_NeewerLightUI import Ui_MainWindow
 except Exception as e:
-    if importError != 1: # if we don't already have a PySide2 issue
+    if importError != 1: # if we don't already have a PySide6 issue
         importError = 2 # log that we can't find the GUI file - which, if the program is downloaded correctly, shouldn't be an issue
 
 # IMPORT THE HTTP SERVER
@@ -3488,29 +3488,29 @@ if __name__ == '__main__':
             except NameError:
                 pass # same as above - we could not load the GUI, but we have already sorted error messages
         else:
-            if importError == 1: # we can't load PySide2
+            if importError == 1: # we can't load PySide6
                 print(" ===== CAN NOT FIND PYSIDE2 LIBRARY =====")
-                print(" You don't have the PySide2 Python library installed.  If you're only running NeewerLite-Python from")
+                print(" You don't have the PySide6 Python library installed.  If you're only running NeewerLite-Python from")
                 print(" a command-line (from a Raspberry Pi CLI for instance), or using the HTTP server, you don't need this package.")
-                print(" If you want to launch NeewerLite-Python with the GUI, you need to install the PySide2 package.")
+                print(" If you want to launch NeewerLite-Python with the GUI, you need to install the PySide6 package.")
                 print()
-                print(" To install PySide2, run either pip or pip3 from the command line:")
-                print("    pip install PySide2")
-                print("    pip3 install PySide2")
+                print(" To install PySide6, run either pip or pip3 from the command line:")
+                print("    pip install PySide6")
+                print("    pip3 install PySide6")
                 print()
                 print(" Or visit this website for more information:")
-                print("    https://pypi.org/project/PySide2/")
-            elif importError == 2: # we have PySide2, but can't load the GUI file itself for some reason
+                print("    https://pypi.org/project/PySide6/")
+            elif importError == 2: # we have PySide6, but can't load the GUI file itself for some reason
                 print(" ===== COULD NOT LOAD/FIND GUI FILE =====")
-                print(" If you don't need to use the GUI, you are fine going without the PySide2 pacakge.")
-                print(" but using NeewerLite-Python with the GUI requires the PySide2 library.")
+                print(" If you don't need to use the GUI, you are fine going without the PySide6 pacakge.")
+                print(" but using NeewerLite-Python with the GUI requires the PySide6 library.")
                 print()
-                print(" If you have already installed the PySide2 library but are still getting this error message,")
+                print(" If you have already installed the PySide6 library but are still getting this error message,")
                 print(" Make sure you have the ui_NeewerLightUI.py script in the same directory as NeewerLite-Python.py")
                 print(" If you don't know where that file is, redownload the NeewerLite-Python package from Github here:")
                 print("    https://github.com/taburineagle/NeewerLite-Python/")
 
-                sys.exit(1) # quit out, we can't run the program without PySide2 or the GUI (for the GUI version, at least)
+                sys.exit(1) # quit out, we can't run the program without PySide6 or the GUI (for the GUI version, at least)
     else: # don't launch the GUI, send command to a light/lights and quit out
         if len(cmdReturn) > 1:
             if cmdReturn[3] == "CCT": # calculate CCT bytestring
